@@ -1,0 +1,27 @@
+task: ivif
+
+data:
+  root: datasets/M3FD
+  a: ir
+  b: vi
+
+model:
+  dim: 64
+  blocks: 4
+  dino: vitl16
+  dino_ckpt: ckpt/dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth
+  lora: true
+  eps: material/emissivity.json
+
+train:
+  batch_size: 1
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  workers: 2
+  amp: true
+  epochs: [40, 100]
+  save_freq: 100
+  log_freq: 10
+  resume_stage: 1
+  resume: null
+  save_dir: runs
